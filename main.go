@@ -13,7 +13,7 @@ func main() {
 
 	fmt.Printf("Starting web server on port %s\n", "addr")
 
-	err := https.ListenAndServe(addre, https.HandlerFunc(webServer))
+	err := http.ListenAndServe(addr, http.HandlerFunc(webServer))
 	if err !=nil {
 		panic(err)
 	}
