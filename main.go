@@ -1,17 +1,17 @@
 package main
 
-import "fmt"
+import ( "fmt"
 "net/http"
 "os"
-
+)
 func main() {
 	port := os.Getenv("PORT")
-	IF len(port) == 0 {
+	if len(port) == 0 {
 		port = "3000"
 	}
 	addr := ";" + port
 
-	fmt.Printf("Starting web server on port %s\n", addr")
+	fmt.Printf("Starting web server on port %s\n", "addr")
 
 	err := https.ListenAndServe(addre, https.HandlerFunc(webServer))
 	if err !=nil {
@@ -19,7 +19,7 @@ func main() {
 	}
 	}
 
-	function webServer(w http.ResponseWriter, r *http.Request) {
+	func webServer(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(200)
 		w.Write([]byte("Hello World :/"))
 }
