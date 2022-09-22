@@ -14,7 +14,8 @@ func main() {
 
 	fmt.Printf("Starting web server on port %s\n", "addr")
 
-	err := http.ListenAndServe(addr, http.HandlerFunc(webServer))
+	// err := http.ListenAndServe(addr, http.HandlerFunc(webServer))
+	err := http.ListenAndServe(addr, &Server{})
 	if err !=nil {
 		panic(err)
 	}
@@ -25,7 +26,7 @@ func main() {
 // 		w.Write([]byte("Hello World :/"))
 // }
 
-type Serve struct{}
+type Server struct{}
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" || r.Method == "HEAD" {
@@ -35,11 +36,11 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 }
 
-if r.Method == "POST" && r.URL.Path == '/notes' {
+if r.Method == "POST" && r.URL.Path == "/notes" {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Hi Cockhead, you posted to the /notes."))
 	return
 }
 
 w.WriteHeader(http.StatusNotFound)
-w.Write([]byte("Hi Cockhead, you requested a page that does not exist."))
+w.Write([]byte("Hi Cockhead, you requested a page that does not exist.")) }
